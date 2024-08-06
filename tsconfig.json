@@ -6,13 +6,6 @@
     },
     {
       "path": "./tsconfig.node.json"
-    },
-    {
-      "compilerOptions": {
-        "noEmitOnError": true,
-        "strict": true
-      }
     }
-    
   ]
 }
