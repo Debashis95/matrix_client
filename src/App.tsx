@@ -8,35 +8,42 @@ import AuthRouter from "./middleware/AuthRouter";
 import Dashboard from "./components/Dashboard";
 import UserPerformance from "./components/UserPerfomance";
 import EmailVerification from "./components/EmailVerification";
+import Root from "./layouts/Root";
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
     {
-      path: "/signup",
-      element: <SignUp />,
-    },
-    {
-      path: "/verify-email/:token",
-      element: <EmailVerification />,
-    },
-    {
-      path: "/signin",
-      element: <SignIn />,
-    },
-    {
-      element: <AuthRouter />,
+      path: "/",
+      element: <Root />,
       children: [
         {
-          path: "/",
-          element: <MatrixCalculator />,
+          path: "/signup",
+          element: <SignUp />,
         },
         {
-          path: "/dashboard",
-          element: <Dashboard />,
+          path: "/verify-email/:token",
+          element: <EmailVerification />,
         },
         {
-          path: "/performance",
-          element: <UserPerformance  userId="" />,
+          path: "/signin",
+          element: <SignIn />,
+        },
+        {
+          element: <AuthRouter />,
+          children: [
+            {
+              path: "/",
+              element: <MatrixCalculator />,
+            },
+            {
+              path: "/dashboard",
+              element: <Dashboard />,
+            },
+            {
+              path: "/performance",
+              element: <UserPerformance userId="" />,
+            },
+          ],
         },
       ],
     },
