@@ -24,7 +24,7 @@ const UserPerformance: React.FC<{ userId: string }> = ({ userId }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data && data.performance.map((operation) => (
+              {data && data.performance.map((operation: { _id: string; count: number }) => (
                 <TableRow key={operation._id}>
                   <TableCell component="th" scope="row">{operation._id}</TableCell>
                   <TableCell align="right">{operation.count}</TableCell>

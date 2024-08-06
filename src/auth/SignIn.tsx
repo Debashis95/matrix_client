@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
-import { SignInFormData } from '../typescript/interface/user.interface';
+import { SignInFormData, SignUpFormData } from '../typescript/interface/user.interface';
 import { useLogUser } from '../hooks/react-query/useManageUser';
 
 
@@ -10,7 +10,7 @@ const SignIn: React.FC= () => {
  
 const {mutate,isPending}=useLogUser()
   const onSubmit = (data: SignInFormData) => {
-    mutate(data);
+    mutate(data as unknown as SignUpFormData);
   };
 
   return (

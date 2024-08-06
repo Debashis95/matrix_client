@@ -36,7 +36,7 @@ const App: React.FC = () => {
         },
         {
           path: "/performance",
-          element: <UserPerformance />,
+          element: <UserPerformance  userId="" />,
         },
       ],
     },

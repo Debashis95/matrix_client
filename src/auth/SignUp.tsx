@@ -14,13 +14,13 @@ const SignUp: React.FC = () => {
   const onSubmit = (data: SignUpFormData) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
-      formData.append(key, value);
+      formData.append(key, value as string);
     });
     if (profileImage) {
       formData.append("profile_image", profileImage);
     }
 
-    mutate(formData);
+    mutate(data);
   };
 
   return (
@@ -118,7 +118,7 @@ const SignUp: React.FC = () => {
             name="profile_image"
             control={control}
             defaultValue=""
-            render={({ field: { onChange, value, ...rest } }) => (
+            render={({ field }) => (
               <TextField
                 type="file"
                 margin="normal"
@@ -126,9 +126,10 @@ const SignUp: React.FC = () => {
                 label="Profile Image"
                 InputLabelProps={{ shrink: true }}
                 onChange={(event) => {
-                  const file = event.target.files?.[0];
+                  const file = (event.target as HTMLInputElement).files?.[0];
                   if (file) {
                     setProfileImage(file);
+                    field.onChange(file);
                   }
                 }}
                 inputProps={{

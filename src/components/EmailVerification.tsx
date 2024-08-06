@@ -5,7 +5,7 @@ import { useEmailVerification } from "../hooks/react-query/useManageUser";
 
 const EmailVerification: React.FC = () => {
   const { token } = useParams<{ token: string }>();
-  const { data, isLoading, isError } = useEmailVerification(token);
+  const { data, isLoading, isError } = useEmailVerification(token || "");
 
   return (
     <Container maxWidth="sm">

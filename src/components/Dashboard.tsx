@@ -41,7 +41,7 @@ const Dashboard: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.topUsers.map((user, index) => (
+              {data.topUsers.map((user: any, index: number) => (
                 <TableRow
                   key={user._id}
                   onClick={() => handleUserClick(user._id)}
