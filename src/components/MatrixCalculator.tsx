@@ -23,7 +23,7 @@ const MatrixCalculator: React.FC = () => {
 
   const { mutate: saveMatrices } = useSaveMatrices();
   // const { mutate:  } = use();
-  const userId = getUserIdFromToken();
+  const userId = getUserIdFromToken() || '';
   const generateMatrices = useCallback(() => {
     setMatrix1(generateMatrix(rows, columns, (i, j) => i + j));
     setMatrix2(generateMatrix(rows, columns, (i, j) => i * j));
