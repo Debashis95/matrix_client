@@ -1,6 +1,6 @@
 import React from "react";
 import MatrixCalculator from "./components/MatrixCalculator";
-import "./App.css";
+// import "./App.css";
 import SignUp from "./auth/SignUp";
 import SignIn from "./auth/SignIn";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
