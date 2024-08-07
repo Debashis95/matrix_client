@@ -14,4 +14,7 @@ export const endPoints = {
     dashboard: "/matrix/dashboard",
     performance: "/matrix/user-performance",
   },
+  images: {
+    profileImage: '/images'
+  }
 };

@@ -27,7 +27,7 @@ export const useLogUser = () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       localStorage.setItem("token", data.token);
       console.log("Login successful!");
-      navigate("/");
+      navigate("/dashboard");
     },
   });
 };

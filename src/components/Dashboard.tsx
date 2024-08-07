@@ -9,9 +9,11 @@ import {
   TableHead,
   TableRow,
   Container,
+  Avatar,
 } from "@mui/material";
 import { useDashboardData } from "../hooks/react-query/useManageUser";
 import UserPerformance from "./UserPerfomance";
+import { baseURL, endPoints } from '../api/endPoints';
 
 const Dashboard: React.FC = () => {
   const { data, isLoading } = useDashboardData();
@@ -41,7 +43,7 @@ const Dashboard: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.topUsers.map((user: any, index: number) => (
+              {data.topUsers.map((user: { _id: string; userDetails?: { full_name: string; profile_image?: string }[]; count: number }, index: number) => (
                 <TableRow
                   key={user._id}
                   onClick={() => handleUserClick(user._id)}
@@ -50,7 +52,13 @@ const Dashboard: React.FC = () => {
                   <TableCell component="th" scope="row">
                     {index + 1}
                   </TableCell>
-                  <TableCell>{user.userDetails[0].full_name}</TableCell>
+                  <TableCell>
+                    <Avatar 
+                      src={user.userDetails && user.userDetails[0]?.profile_image ? `${baseURL}${endPoints.images.profileImage}/${user.userDetails[0].profile_image}` : undefined}
+                      alt={user.userDetails && user.userDetails[0]?.full_name || 'User'}
+                    />
+                    {user.userDetails && user.userDetails[0]?.full_name || 'N/A'}
+                  </TableCell>
                   <TableCell align="right">{user.count}</TableCell>
                 </TableRow>
               ))}
