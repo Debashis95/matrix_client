@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography, Box, Button } from "@mui/material";
 import MatrixInput from "./MatrixInput";
 import MatrixDisplay from "./MatrixDisplay";
 import {
@@ -13,14 +13,16 @@ import {
   useSaveMatrices,
   getUserIdFromToken,
 } from "../hooks/react-query/useMatrixResult";
+import { useNavigate } from "react-router-dom";
 
 const MatrixCalculator: React.FC = () => {
+
   const [rows, setRows] = useState<number>(2);
   const [columns, setColumns] = useState<number>(2);
   const [matrix1, setMatrix1] = useState<Matrix>([]);
   const [matrix2, setMatrix2] = useState<Matrix>([]);
   const [resultMatrix, setResultMatrix] = useState<Matrix>([]);
-
+  const navigate=useNavigate()
   const { mutate: saveMatrices } = useSaveMatrices();
   // const { mutate:  } = use();
   const userId = getUserIdFromToken() || '';
@@ -31,6 +33,7 @@ const MatrixCalculator: React.FC = () => {
   }, [rows, columns]);
 
   const addMatricesHandler = useCallback(() => {
+  
     const result = addMatrices(matrix1, matrix2);
     setResultMatrix(result);
     saveMatrices({
@@ -152,6 +155,13 @@ const MatrixCalculator: React.FC = () => {
           </>
         )}
       </Box>
+      <Button 
+  variant="contained" 
+  onClick={() => navigate('/dashboard')}
+  sx={{ mt: 2 }}
+>
+  Go to Dashboard
+</Button>
     </Container>
   );
 };

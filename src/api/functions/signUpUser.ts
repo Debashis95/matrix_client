@@ -1,12 +1,12 @@
 import { axiosInstance } from '../axiosInstance';
 import { endPoints } from '../endPoints';
-import { SignUpFormData } from '../../typescript/interface/user.interface';
+// import { SignUpFormData } from '../../typescript/interface/user.interface';
 
-export const signUpUser = async (input: SignUpFormData) => {
+export const signUpUser = async (formData: FormData) => {
   try {
     const { data } = await axiosInstance.post(
       `${endPoints.users.signup}`,
-      input
+      formData
     );
     return data;
   } catch (error) {

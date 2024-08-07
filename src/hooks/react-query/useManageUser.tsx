@@ -10,7 +10,7 @@ export const useCreateNewUser = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: signUpUser,
+    mutationFn:  (formData: FormData) => signUpUser(formData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       console.log("success !");
@@ -27,7 +27,7 @@ export const useLogUser = () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       localStorage.setItem("token", data.token);
       console.log("Login successful!");
-      navigate("/dashboard");
+      navigate("/");
     },
   });
 };

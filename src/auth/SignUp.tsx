@@ -20,7 +20,7 @@ const SignUp: React.FC = () => {
       formData.append("profile_image", profileImage);
     }
 
-    mutate(data);
+    mutate(formData);
   };
 
   return (
